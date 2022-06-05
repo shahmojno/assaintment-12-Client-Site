@@ -14,11 +14,14 @@ const Product = ({ product }) => {
                 <h3>Price Per Unit : {product.pricePerUnit}</h3>
                 <h3>Available Quantity : {product.availableQuantity}</h3>
                 <h3>Minimum Order Quantity : {product.minimumOrderQuantity}</h3>
-
-
-
-
                 <p>Description :{product.description}</p>
+                <div className="card-actions justify-center">
+
+                    <label htmlFor="booking-modal-6"
+
+                        className="btn  btn-sm btn-secondary text-white uppercase bg-gradient-to-r from-secondary to-primary"
+                    >Order Now</label>
+                </div>
 
             </div>
         </div>
