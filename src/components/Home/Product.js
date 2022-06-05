@@ -6,7 +6,7 @@ const Product = ({ product }) => {
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-                <img src={product.img} alt="Shoes" className="rounded-xl width-50%" />
+                <img src={product.img} alt="Shoes" className="rounded-xl h-40 w-32" />
             </figure>
             <div className="card-body items-center text-center">
 

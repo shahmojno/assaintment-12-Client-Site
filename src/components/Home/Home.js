@@ -3,8 +3,8 @@ import Banner from './Banner';
 import Products from './Products';
 
 
-import Reviews from './Reviews';
 import Summary from './Summary';
+import TopReviews from './TopReviews';
 
 
 const Home = () => {
@@ -12,8 +12,9 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Products></Products>
+            <TopReviews></TopReviews>
             <Summary></Summary>
-            <Reviews></Reviews>
+
 
         </div>
     );
