@@ -6,7 +6,7 @@ const Products = () => {
 
     const [tools, settools] = useState([]);
     useEffect(() => {
-        fetch('https://secure-crag-00162.herokuapp.com/tools')
+        fetch('https://mighty-plains-36942.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => settools(data));
     }, [])

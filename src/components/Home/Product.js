@@ -6,7 +6,8 @@ const Product = ({ product }) => {
 
     const navigate = useNavigate();
     const navigateDetails = id => {
-        navigate(`/purchase/${_id}`);
+        navigate(`/tools/${_id}`);
+
 
     }
 
@@ -29,6 +30,7 @@ const Product = ({ product }) => {
                         onClick={() => navigateDetails(_id)}
                         className="btn  btn-sm btn-secondary text-white uppercase bg-gradient-to-r from-secondary to-primary"
                     >Order Now</label>
+
 
 
 

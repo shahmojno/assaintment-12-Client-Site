@@ -12,6 +12,7 @@ import Purchase from './components/Home/Purchase';
 
 
 
+
 function App() {
   return (
     <div>
@@ -23,13 +24,15 @@ function App() {
 
         <Route path="login" element={<Login />} />
 
-        <Route path='purchase' element={
-          <RequireAuth>
-            <Purchase />
-          </RequireAuth>
-        } >
 
-        </Route>
+
+        <Route path='/tools/:productId'
+          element={<RequireAuth>
+            <Purchase></Purchase>
+          </RequireAuth>}></Route>
+        <Route path='/purchase' element={<Purchase></Purchase>}></Route>
+
+
 
       </Routes>
 
