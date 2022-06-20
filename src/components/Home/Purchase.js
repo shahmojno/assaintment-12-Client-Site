@@ -1,11 +1,37 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import ProductDetails from './ProductDetails';
 
 const Purchase = () => {
+
     const { productId } = useParams();
     const [product] = ProductDetails(productId);
     console.log(product);
+
+
+    let [count, setCount] = useState(0);
+
+    function incrementCount() {
+        if (product.minimumOrderQuantity + count <= product.availableQuantity) {
+            count = count + 1;
+            setCount(count);
+        }
+
+
+    }
+
+
+
+
+    function decrementCount() {
+        if (product.minimumOrderQuantity + count >= product.minimumOrderQuantity) {
+            count = count = -1;
+            setCount(count);
+        }
+
+    }
+
+
 
 
 
@@ -20,15 +46,36 @@ const Purchase = () => {
                 <p>Price : {product.pricePerUnit}</p>
                 <p>Available QT : {product.availableQuantity}</p>
                 <p>Minimum Order QT : {product.minimumOrderQuantity}</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+                <div >
+
+                    <label onClick={() => product.availableQuantity} for="my-modal-6" class="btn modal-button">Buy Now</label>
+                    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                    <div class="modal modal-bottom sm:modal-middle">
+                        <div class="modal-box">
+                            <div>
+                                <p>Price : {product.pricePerUnit}</p>
+                                <p>Available QT : {product.availableQuantity}</p>
+                                <p className='mb-3'>Minimum Order QT : {product.minimumOrderQuantity}</p>
+                            </div>
+                            <input type="text" placeholder="Address" class="input input-bordered input-info w-full max-w-xs mb-3" />
+                            <input type="text" placeholder="Phone " class="input input-bordered input-info w-full max-w-xs mb-3" />
+
+                            <input type="number" name="" class="input input-bordered input-info w-full max-w-xs mb-3" />
+                            <div>
+                                <div>{product.minimumOrderQuantity + count}</div>
+
+                                <button onClick={incrementCount}>+</button>
+                                <button onClick={decrementCount}>-</button>
+                            </div>
+                            <div class="modal-action">
+                                <label for="my-modal-6" class="btn">Confirm</label>
+                                <label for="my-modal-6" class="btn">Close</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
-
-
+        </div >
     );
 };
 

@@ -31,9 +31,6 @@ const Product = ({ product }) => {
                         className="btn  btn-sm btn-secondary text-white uppercase bg-gradient-to-r from-secondary to-primary"
                     >Order Now</label>
 
-
-
-
                 </div>
 
             </div>

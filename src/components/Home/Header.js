@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth)
+    console.log(user);
     const logout = () => {
         signOut(auth);
         localStorage.removeItem('accessToken');
@@ -23,7 +24,10 @@ const Header = () => {
         }
 
         <li>{user ? <button className="btn btn-ghost" onClick={logout}>Sign Out</button> : <Link to="/login">Login</Link>}</li>
+        <h3 className="ml-5">{user && user.displayName}</h3>
+        <h3 className='ml-5'>{user && user.email}  </h3>
     </>
+
 
 
     return (
