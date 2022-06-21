@@ -7,6 +7,8 @@ import Footer from './components/Shared/Footer';
 import Login from './components/Shared/Loging';
 import RequireAuth from './components/Login/RequireAuth';
 import Purchase from './components/Home/Purchase';
+import SingUp from './components/Login/SingUp';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 
@@ -31,6 +33,10 @@ function App() {
             <Purchase></Purchase>
           </RequireAuth>}></Route>
         <Route path='/purchase' element={<Purchase></Purchase>}></Route>
+        <Route path='singup' element={<SingUp />}></Route>
+        <Route path='dashboard' element={<Dashboard />}></Route>
+
+
 
 
 

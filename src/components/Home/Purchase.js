@@ -12,14 +12,13 @@ const Purchase = () => {
     let [count, setCount] = useState(0);
 
     function incrementCount() {
-        if (product.minimumOrderQuantity + count <= product.availableQuantity) {
+        if (product.minimumOrderQuantity + count < product.availableQuantity) {
             count = count + 1;
             setCount(count);
         }
 
 
     }
-
 
 
 
