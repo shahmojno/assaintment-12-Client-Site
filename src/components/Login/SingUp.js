@@ -1,12 +1,10 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useForm } from "react-hook-form";
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import Loading from '../Shared/Loading';
 import useToken from '../Shared/useToken';
+import { useForm } from 'react-hook-form';
 
 
 const SingUp = () => {
@@ -36,12 +34,11 @@ const SingUp = () => {
         signInError = <p className='text-red-500'>{error?.message || gError?.message || updateError?.message}</p>
     }
 
+    if (token) {
 
+        navigate('/dashboard');
 
-
-
-    navigate('/dashboard');
-
+    }
 
 
     const onSubmit = async data => {

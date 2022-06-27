@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import auth from '../../firebase.init';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import useToken from './useToken';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Loading from './Loading';
+import useToken from './useToken';
+
 
 
 
@@ -24,7 +25,15 @@ const Login = () => {
     let signInError;
 
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    useEffect(() => {
+        if (token) {
 
+            navigate(from, { replace: true });
+
+        }
+    }, [token, from, navigate])
 
 
 
@@ -37,7 +46,7 @@ const Login = () => {
     }
 
 
-    navigate('/dashboard');
+    // navigate('/dashboard');
 
 
 

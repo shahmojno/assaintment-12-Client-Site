@@ -9,6 +9,9 @@ import RequireAuth from './components/Login/RequireAuth';
 import Purchase from './components/Home/Purchase';
 import SingUp from './components/Login/SingUp';
 import Dashboard from './components/Dashboard/Dashboard';
+import MyOrders from './components/Dashboard/MyOrders';
+import MyProfile from './components/Dashboard/MyProfile';
+import Review from './components/Dashboard/Review';
 
 
 
@@ -32,9 +35,16 @@ function App() {
           element={<RequireAuth>
             <Purchase></Purchase>
           </RequireAuth>}></Route>
+
         <Route path='/purchase' element={<Purchase></Purchase>}></Route>
         <Route path='singup' element={<SingUp />}></Route>
-        <Route path='dashboard' element={<Dashboard />}></Route>
+
+        <Route path='dashboard' element={<Dashboard />}>
+          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='review' element={<Review></Review>}></Route>
+
+        </Route>
 
 
 
