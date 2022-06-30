@@ -7,12 +7,12 @@ import auth from '../../firebase.init';
 
 const MyOrders = () => {
 
-    const [appointments, setAppointments] = useState([]);
+    const [product, setproduct] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+            fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,8 @@ const MyOrders = () => {
                     return res.json()
 
                 })
-                .then(data => setAppointments(data));
+                .then(data => setproduct(data));
+
         }
     }, [user])
 
@@ -36,7 +37,7 @@ const MyOrders = () => {
 
     return (
         <div>
-            <h1>My Appointment {appointments.length}</h1>
+            <h1>My Order {product.length}</h1>
 
             <div class="overflow-x-auto">
                 <table class="table w-full">
@@ -44,21 +45,24 @@ const MyOrders = () => {
                     <thead>
                         <tr>
                             <th></th>
+
                             <th>Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Treatment</th>
+                            <th>phone</th>
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            appointments.map((a, index) =>
+                            product.map((a, index) =>
                                 <tr>
                                     <th>{index + 1}</th>
-                                    <td>{a.patientName}</td>
-                                    <td>{a.date}</td>
-                                    <td>{a.slot}</td>
-                                    <td>{a.treatment}</td>
+                                    <td>{a.userName}</td>
+                                    <td>{a.phone}</td>
+                                    <td>{a.product}</td>
+                                    <td>{a.qty}</td>
+
                                 </tr>)
                         }
 

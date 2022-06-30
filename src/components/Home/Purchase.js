@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -15,6 +14,20 @@ const Purchase = () => {
     let [count, setCount] = useState(0);
 
 
+    function incrementCount() {
+        if (product.minimumOrderQuantity + count < product.availableQuantity) {
+            count = count + 1;
+            setCount(count);
+        }
+
+    }
+
+    function decrementCount() {
+        if (product.minimumOrderQuantity + count > product.minimumOrderQuantity) {
+            count = count - 1;
+            setCount(count);
+        }
+    }
 
 
 
@@ -26,7 +39,8 @@ const Purchase = () => {
             product: product.name,
             userEmail: user.email,
             userName: user.displayName,
-            phone: event.target.phone.value
+            phone: event.target.phone.value,
+            qty: event.target.qty.value
         }
 
         fetch('http://localhost:5000/order', {
@@ -100,6 +114,14 @@ const Purchase = () => {
                                         <input type="email" nsame="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
                                         <input type="text" name="phone" placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
 
+                                        <span className='flex '>
+
+                                            <input type="number" placeholder='Quantity :' name="qty" value={product?.minimumOrderQuantity + count || ''} className="input input-bordered max-w-xs ml-9 w-64" />
+                                            <h1 className='text-2xl pl-2 pr-2' onClick={decrementCount} >-</h1>
+                                            <button className=' text-lg pl-2 pr-2' value="Change" onClick={incrementCount} >+</button>
+
+                                        </span>
+
                                         <input for="my-modal-6" type="submit" value="submit" className="btn btn-secondary w-full max-w-xs" />
 
                                     </form>
@@ -125,8 +147,3 @@ const Purchase = () => {
 
 
 export default Purchase;
-
-
-
-
-
