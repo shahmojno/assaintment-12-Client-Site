@@ -12,6 +12,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import MyOrders from './components/Dashboard/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile';
 import Review from './components/Dashboard/Review';
+import Users from './components/Dashboard/Users';
 
 
 
@@ -38,11 +39,13 @@ function App() {
 
         <Route path='/purchase' element={<Purchase></Purchase>}></Route>
         <Route path='singup' element={<SingUp />}></Route>
+        <Route path='users' element={<Users></Users>}></Route>
 
         <Route path='dashboard' element={<Dashboard />}>
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
           <Route path='review' element={<Review></Review>}></Route>
+          <Route path='users' element={<Users></Users>}></Route>
 
         </Route>
 

@@ -17,6 +17,8 @@ const Header = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/order">My Orders</Link></li>
         <li><Link to="/review">Review</Link></li>
+        <li><Link to="/users">users</Link></li>
+
 
         {
             user && <li><Link to="/dashboard">Dasboard</Link></li>
@@ -50,6 +52,7 @@ const Header = () => {
                 <a className="btn btn-ghost normal-case text-xl">Hand Tools Shop</a>
             </div>
             <div className="navbar-center hidden lg:flex">
+
                 {menuItems}
             </div>
             <div className="navbar-end">
