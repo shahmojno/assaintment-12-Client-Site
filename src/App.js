@@ -13,6 +13,9 @@ import MyOrders from './components/Dashboard/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile';
 import Review from './components/Dashboard/Review';
 import Users from './components/Dashboard/Users';
+import NotFound from './components/Shared/NotFound';
+import MyPortfolio from './components/Home/MyPortfolio';
+import Blogs from './components/Home/Blogs';
 
 
 
@@ -40,12 +43,17 @@ function App() {
         <Route path='/purchase' element={<Purchase></Purchase>}></Route>
         <Route path='singup' element={<SingUp />}></Route>
         <Route path='users' element={<Users></Users>}></Route>
+        <Route path='portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+        <Route path='blogs' element={<Blogs></Blogs>}></Route>
+
+        <Route path='*' element={<NotFound></NotFound>}></Route>
 
         <Route path='dashboard' element={<Dashboard />}>
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
           <Route path='review' element={<Review></Review>}></Route>
           <Route path='users' element={<Users></Users>}></Route>
+
 
         </Route>
 
