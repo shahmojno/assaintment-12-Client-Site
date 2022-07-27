@@ -45,6 +45,8 @@ function App() {
         <Route path='users' element={<Users></Users>}></Route>
         <Route path='portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
+
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
 

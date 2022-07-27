@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Home from './Home';
 import ProductDetails from './ProductDetails';
 
-const Purchase = () => {
+const Purchase = (refetch) => {
 
     const [user, loading, error] = useAuthState(auth);
     const { productId } = useParams();
@@ -34,6 +35,8 @@ const Purchase = () => {
 
     const handleOrder = event => {
         event.preventDefault();
+        const name = event.target.name.value;
+        // Navigate("/");
         const order = {
             productId: product._id,
             product: product.name,
@@ -43,7 +46,7 @@ const Purchase = () => {
             qty: event.target.qty.value
         }
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://mighty-plains-36942.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,12 +57,14 @@ const Purchase = () => {
             .then(data => {
                 //to close the modal
                 if (data.success) {
-                    toast(`Order is success, ${data.order?._id} at ${data.order?._id}`)
+                    toast(`Order is success,  ${name}`)
+                    console.log(toast(`Order is success, ${product?._id} at ${product._id}`));
                 }
                 else {
                     toast.error(`Already order on, ${data.order?._id} at ${data.order?._id}`)
                 }
                 console.log(data);
+                refetch();
 
 
 
@@ -71,11 +76,13 @@ const Purchase = () => {
     return (
 
 
-        <div class="card w-96 bg-base-100 shadow-xl ml-5">
+        <div class="card w-96 bg-base-100 shadow-xl ml-96 mx-auto ">
 
-            <div className=' grid grid-cols-1 gap-3 justify-items-center mt-3 '>
-                <h2 class="card-title">{product.name}</h2>
-                <figure><  img src={product.img} className="w=200&h=225 " alt="" /></figure>
+            <div className=''>
+                <h1 class="card-title text-primary text-2xl justify-content-center py-5 px-20"> Product Details</h1>
+
+                <h2 class="card-title text-secondary ml-8 "> Product Name : {product.name}</h2>
+                {/* <figure><  img src={product.img} className="w=100&h=125 " alt="" /></figure> */}
                 <div class="card-body ">
 
                     <p>Description : {product.description}</p>
@@ -99,10 +106,6 @@ const Purchase = () => {
                             <label htmlFor="my-modal-6" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                             <h3 className="text-lg font-bold text-secondary">Order For : {product.name}</h3>
 
-
-
-
-
                             <div>
 
                                 <div className='text-lg'>
@@ -121,8 +124,8 @@ const Purchase = () => {
                                             <button className=' text-lg pl-2 pr-2' value="Change" onClick={incrementCount} >+</button>
 
                                         </span>
+                                        <label><input htmlFor="my-modal-6" type="submit" value="submit" className="btn btn-secondary w-full max-w-xs" /></label>
 
-                                        <input for="my-modal-6" type="submit" value="submit" className="btn btn-secondary w-full max-w-xs" />
 
                                     </form>
 
