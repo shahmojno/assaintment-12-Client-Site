@@ -11,7 +11,7 @@ const MyProfile = () => {
     }
     return (
         <div>
-            <h1 className='mx-auto text-2xl text-secondary justify-center  '>My Profile</h1>
+            <h1 className='mx-auto text-2xl text-secondary flex justify-center my-5'>My Profile</h1>
             <div className='text-lg'>
                 <form onSubmit={handleOrder} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
 

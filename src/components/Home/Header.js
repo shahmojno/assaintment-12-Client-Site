@@ -20,10 +20,12 @@ const Header = () => {
             user && <li><Link to="/dashboard">Dasboard</Link></li>
         }
 
-        <li><Link to="/contact">Contact</Link></li>
+
+        <li><Link to="/myprofile">My Profile</Link></li>
         <li><Link to="/portfolio">My Portfolio</Link></li>
         <li><Link to="/blogs">Blogs</Link></li>
-        <li><Link to="/myprofile">My Profile</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+
 
         {
             // user && <li><Link to="/purchase">Purchase</Link></li>
