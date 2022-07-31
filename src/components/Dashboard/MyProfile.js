@@ -25,7 +25,7 @@ const MyProfile = (refetch) => {
         }
 
 
-        fetch('http://localhost:5000/profile', {
+        fetch('https://mighty-plains-36942.herokuapp.com/profile', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
