@@ -1,12 +1,14 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { toast } from 'react-toastify';
+
+import { ToastContainer, toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyProfile = (refetch) => {
     const [user, loading, error] = useAuthState(auth);
 
-    const profile = event => {
+    const handleProfile = event => {
         event.preventDefault();
 
         const profile = {
@@ -30,11 +32,11 @@ const MyProfile = (refetch) => {
             .then(data => {
                 //to close the modal
                 if (data.success) {
-                    toast(` success,  ${user?.displayName || ''}`)
-                    console.log(toast(`success, ${user?.displayName || ''} at ${user?.displayName || ''}`));
+                    toast(` success`)
+
                 }
                 else {
-                    toast.error(`Already on, ${user?.displayName || ''} at ${user?.displayName || ''}`)
+                    toast.error(`Already Profile Update, ${user.displayName} at ${user.displayName}`)
                 }
                 console.log(data);
                 refetch();
@@ -45,10 +47,13 @@ const MyProfile = (refetch) => {
 
     }
     return (
-        <div>
+
+
+        <div class="modal-box">
+            <label htmlFor="my-modal-6" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
             <h1 className='mx-auto text-2xl text-secondary flex justify-center my-5'>My Profile</h1>
             <div className='text-lg'>
-                <form onSubmit={profile} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
+                <form onSubmit={handleProfile} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
 
                     <input type="text" name="name" disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
                     <input type="text" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
@@ -62,10 +67,12 @@ const MyProfile = (refetch) => {
 
 
                 </form>
+                <ToastContainer />
 
 
             </div>
         </div>
+
     );
 };
 

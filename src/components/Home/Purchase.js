@@ -57,7 +57,7 @@ const Purchase = (refetch) => {
             .then(data => {
                 //to close the modal
                 if (data.success) {
-                    toast(`Order is success,  ${name}`)
+                    toast(`Order is success`)
                     console.log(toast(`Order is success, ${product?._id} at ${product._id}`));
                 }
                 else {
