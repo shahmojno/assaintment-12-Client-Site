@@ -32,7 +32,7 @@ const MyProfile = (refetch) => {
             .then(data => {
                 //to close the modal
                 if (data.success) {
-                    toast(` success`)
+                    toast(`Profile Data Save Successfully ${user.displayName}`)
 
                 }
                 else {
@@ -54,7 +54,7 @@ const MyProfile = (refetch) => {
             <h1 className='mx-auto text-2xl text-secondary flex justify-center my-5'>My Profile</h1>
             <div className='text-lg'>
                 <form onSubmit={handleProfile} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
-
+                    <ToastContainer />
                     <input type="text" name="name" disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
                     <input type="text" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
                     <input type="text" name="education" placeholder="Education" className="input input-bordered w-full max-w-xs" />
@@ -67,7 +67,7 @@ const MyProfile = (refetch) => {
 
 
                 </form>
-                <ToastContainer />
+
 
 
             </div>

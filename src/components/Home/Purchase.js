@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Home from './Home';
 import ProductDetails from './ProductDetails';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Purchase = (refetch) => {
 
@@ -57,8 +58,8 @@ const Purchase = (refetch) => {
             .then(data => {
                 //to close the modal
                 if (data.success) {
-                    toast(`Order is success`)
-                    console.log(toast(`Order is success, ${product?._id} at ${product._id}`));
+                    toast(`Order is success, ${product?.name}`)
+
                 }
                 else {
                     toast.error(`Already order on, ${data.order?._id} at ${data.order?._id}`)
@@ -107,7 +108,7 @@ const Purchase = (refetch) => {
                             <h3 className="text-lg font-bold text-secondary">Order For : {product.name}</h3>
 
                             <div>
-
+                                <ToastContainer />
                                 <div className='text-lg'>
                                     <form onSubmit={handleOrder} className='grid grid-cols-1 gap-3 justify-items-center mt-3'>
 
@@ -128,6 +129,7 @@ const Purchase = (refetch) => {
 
 
                                     </form>
+
 
 
                                 </div>
