@@ -16,6 +16,7 @@ import Users from './components/Dashboard/Users';
 import NotFound from './components/Shared/NotFound';
 import MyPortfolio from './components/Home/MyPortfolio';
 import Blogs from './components/Home/Blogs';
+import Contact from './components/Home/Contact';
 
 
 
@@ -46,7 +47,7 @@ function App() {
         <Route path='portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='blogs' element={<Blogs></Blogs>}></Route>
         <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
-
+        <Route path='contact' element={<Contact></Contact>}></Route>
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
 
